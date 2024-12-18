@@ -38,6 +38,7 @@
   </ol>
 </details>
 <br>
+<!--
 <style>
     ol{
         list-style-type: none;
@@ -54,7 +55,7 @@
     ol ol > li::before {
         content: counter(section) "." counter(subsection) " ";
     }
-    </style>
+    </style> -->
 
 
 
