@@ -175,7 +175,7 @@ void ADC14_IRQHandler(void) {
             buttonPressed = 1;
 
         // Format and send positions via UART
-        sprintf(buffer, "X:%llu Y:%llu\n B:%d\n", xPosition, yPosition, buttonPressed);
+        sprintf(buffer, "X:%llu Y:%llu B:%d\n", xPosition, yPosition, buttonPressed);
         for (i = 0; buffer[i] != '\0'; i++) {
             UART_transmitData(EUSCI_A0_BASE, buffer[i]);
         }
