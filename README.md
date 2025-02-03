@@ -12,7 +12,7 @@
   <br /><br />
   </p>
   </div> 
-
+https://img.shields.io/badge/Homarr-FA5252?style=for-the-badge&logo=homarr&logoColor=white
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
