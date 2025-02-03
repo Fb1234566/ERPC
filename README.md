@@ -63,31 +63,33 @@ These are just some of the functions the remote control can perform. By adding t
 
 <!-- BUILT WITH -->
 ## Built with
-C
+C <br>  
 Python
  
 <br>
 
 
 <h3 style="margin-left: 20px;" id="software-requirements">Software requirements</h3>
-<p style="margin-left: 40px;">Software required to program the boards:
-  → visual studio code: https://code.visualstudio.com/download
-  → code composer studio: https://www.ti.com/tool/download/CCSTUDIO/12.7.0
-  → arduino id (per ESP32): https://www.arduino.cc/en/software
+<p style="margin-left: 40px;">Software required to program the boards: <br>
+  → visual studio code: https://code.visualstudio.com/download <br>
+  → code composer studio: https://www.ti.com/tool/download/CCSTUDIO/12.7.0 <br>
+  → arduino id (per ESP32): https://www.arduino.cc/en/software 
 </p>
 
 <h3 style="margin-left: 20px;" id="hardware-requirements">Hardware requirements</h3>
-<p style="margin-left: 40px;">Hardware components needed to built the device:
-Texas Instruments MSP432P401R microcontroller
-Educational BoosterPack MKII
-ESP-EYE (ESP32)
-3 batteries AA (or a 4V5)
-Potentiometer
-Button
-Electrical wires
-Insulating tape
-Copper or tin
-Plywood
+<p style="margin-left: 40px;">Hardware components needed to built the device: 
+<ul>
+<li> Texas Instruments MSP432P401R microcontroller </li>
+<li> Educational BoosterPack MKII </li>
+<li> ESP-EYE (ESP32) </li>
+<li> 3 batteries AA (or a 4V5) </li>
+<li> Potentiometer </li>
+<li> Button </li>
+<li> Electrical wires </li>
+<li> Insulating tape </li>
+<li> Copper or tin </li>
+<li> Plywood </li>
+</ul>
 </p>
 
 <p align="right">(<a href="#readme-erpc">back to top</a>)</p>
@@ -127,33 +129,27 @@ Plywood
 <!-- TEAM MEMBERS -->
 ## Team members
 Beatrice Faccioli: <br>
-&nbsp; - Contributed on looking for codes that could be useful for the project
-Managed the button for the virtual keyboard and the LCD screen
-Managed the documentation, presentation and video
-
+&nbsp; - Contributed on looking for codes that could be useful for the project <br>
+- Managed the button for the virtual keyboard and the LCD screen <br>
+- Managed the documentation, presentation and video <br>
 MAIL: beatricefaccioli.v@gmail.com
 <br> <br>
 Filippo Benedetti: <br>
-&nbsp; - Contributed on the creation of the container for the MSP432P401R and ESP32
-Managed the configuration of the potentiometer
-Contributed in the development of a protocol to transmit the values through a socket connection
-
-
+&nbsp; - Contributed on the creation of the container for the MSP432P401R and ESP32 <br>
+- Managed the configuration of the potentiometer <br>
+- Contributed in the development of a protocol to transmit the values through a socket connection <br>
 MAIL: filippo.benedetti3@gmail.com
 <br><br>
 Lucia Pecora: <br>
-&nbsp; - Contributed on power supply of the boards
-Worked on the configuration of the pins for the right, esc button and LED
-Managed the documentation, the presentation and the video
-
+&nbsp; - Contributed on power supply of the boards <br>
+- Worked on the configuration of the pins for the right, esc button and LED <br>
+- Managed the documentation, the presentation and the video <br>
 MAIL: luciapecora01@gmail.com
 <br> <br>
 Matteo Marchiori: <br>
-&nbsp; - Contributed on searching libraries and code examples in phyton for the interaction with the OS for managing tasks related to socket communication
-Worked on the configuration of the joystick movement and left button
-Contributed in the development of a protocol to transmit the values through a socket connection
-
-
+&nbsp; - Contributed on searching libraries and code examples in phyton for the interaction with the OS for managing tasks related to socket communication <br>
+- Worked on the configuration of the joystick movement and left button <br>
+- Contributed in the development of a protocol to transmit the values through a socket connection <br>
 MAIL: matteo.marchiori03@gmail.com
 <br>
 
