@@ -129,25 +129,25 @@ Python
 <!-- TEAM MEMBERS -->
 ## Team members
 Beatrice Faccioli: <br>
-&nbsp; - Contributed on looking for codes that could be useful for the project <br>
+&nbsp; Contributed on looking for codes that could be useful for the project <br>
 Managed the button for the virtual keyboard and the LCD screen <br>
 Managed the documentation, presentation and video <br>
 MAIL: beatricefaccioli.v@gmail.com
 <br> <br>
 Filippo Benedetti: <br>
-&nbsp; - Contributed on the creation of the container for the MSP432P401R and ESP32 <br>
+&nbsp; Contributed on the creation of the container for the MSP432P401R and ESP32 <br>
 Managed the configuration of the potentiometer <br>
 Contributed in the development of a protocol to transmit the values through a socket connection <br>
 MAIL: filippo.benedetti3@gmail.com
 <br><br>
 Lucia Pecora: <br>
-&nbsp; - Contributed on power supply of the boards <br>
+&nbsp; Contributed on power supply of the boards <br>
 Worked on the configuration of the pins for the right, esc button and LED <br>
 Managed the documentation, the presentation and the video <br>
 MAIL: luciapecora01@gmail.com
 <br> <br>
 Matteo Marchiori: <br>
-&nbsp; - Contributed on searching libraries and code examples in phyton for the interaction with the OS for managing tasks related to socket communication <br>
+&nbsp; Contributed on searching libraries and code examples in phyton for the interaction with the OS for managing tasks related to socket communication <br>
 Worked on the configuration of the joystick movement and left button <br>
 Contributed in the development of a protocol to transmit the values through a socket connection <br>
 MAIL: matteo.marchiori03@gmail.com
