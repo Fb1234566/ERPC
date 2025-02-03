@@ -61,7 +61,7 @@
 
 <!-- PROJECT INTRODUCTION -->
 ## Project introduction
-A tutti è capitato almeno una volta di star guardando un film sul computer ed essere seduti sul letto. In questi momenti risulta sempre molto scomodo fare azioni come alzare il volume o mettere in pausa. Per queste motivazioni abbiamo pensato di creare il progetto ERPC (Essential Remote PC Control), è un dispositivo composto dalla scheda MSP432P401R della Texas Instrument e dall'ESP32. Questo telecomando grazie al joystick e ad alcuni pulsanti riesce ad emulare le funzionalità di un mouse, a controllare il volume del computer e permette l'uscita dalla schermata intera (ESC). 
+We've all been there at least once, watching a movie on our computer while sitting on the bed. In these moments, simple actions like adjusting the volume or pausing the movie can be unconfortable. That's why we came up with the ERPC project (Essential Remote PC Control), a device consisting of the Texas Instruments MSP432P401R board and the ESP32.By using the joystick and some buttons, the remote control can emulate mouse functions, control the computer's volume, and exit full-screen mode (ESC).
 <br>
 
 <p align="right">(<a href="#readme-erpc">back to top</a>)</p>
