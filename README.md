@@ -56,8 +56,10 @@
 <!-- PROJECT INTRODUCTION -->
 ## Project introduction
 We've all been there at least once, watching a movie on our computer while sitting on the bed. In these moments, simple actions like adjusting the volume or pausing the movie can be annoying. That's why we came up with the ERPC project (Essential Remote PC Control), a device built with the Texas Instruments MSP432P401R board, the educational boosterpack MKII and the ESP32. By using the joystick and some buttons, the remote control can emulate mouse functions, control the computer's volume, and exit full-screen mode (ESC). 
-These are just some of the functions the remote control can perform. By adding the appropriate sensors, many other features could be integrated, such as voice search through a microphone or the inclusion of a touch screen.
+These are just some of the functions the remote control can perform. By adding the appropriate sensors, many other features could be integrated, such as voice search through a microphone or the inclusion of a touch screen. <br>
 <br>
+Project Link: https://github.com/Fb1234566/ERPC.git <br>
+
 
 <p align="right">(<a href="#readme-erpc">back to top</a>)</p>
 
@@ -78,18 +80,17 @@ Python
 
 <h3 style="margin-left: 20px;" id="hardware-requirements">Hardware requirements</h3>
 <p style="margin-left: 40px;">Hardware components needed to built the device: 
-<ul>
-<li> Texas Instruments MSP432P401R microcontroller </li>
-<li> Educational BoosterPack MKII </li>
-<li> ESP-EYE (ESP32) </li>
-<li> 3 batteries AA (or a 4V5) </li>
-<li> Potentiometer </li>
-<li> Button </li>
-<li> Electrical wires </li>
-<li> Insulating tape </li>
-<li> Copper or tin </li>
-<li> Plywood </li>
-</ul>
+
+* Texas Instruments MSP432P401R microcontroller 
+* Educational BoosterPack MKII 
+* ESP-EYE (ESP32) 
+* 3 batteries AA (or a 4V5) 
+* Potentiometer 
+* Button 
+* Electrical wires
+* Insulating tape 
+* Copper or tin 
+* Plywood 
 </p>
 
 <p align="right">(<a href="#readme-erpc">back to top</a>)</p>
@@ -102,6 +103,19 @@ Python
 
 <!-- PROJECT STRUCTURE -->
 ## Project structure
+MSP432_Project
+    ├── Debug                  # Compiled files 
+    ├── Hardware               # Hardware related files
+    │   ├── Wifi               # Manages Wifi connection
+    │   ├── Graphics           # Manages all the graphics required
+    │   └── Lcd                # Manages the LCD setup
+    ├── Logic                  # Control logic and program testing
+    │   └── Interrupts         # Contains all the interrupts required
+    ├── Release
+    ├── targetConfigs          # Target configuration files
+    ├── main.c                 # Main source code
+    └── README.md
+
 <br>
 
 <p align="right">(<a href="#readme-erpc">back to top</a>)</p>
@@ -153,6 +167,5 @@ Matteo Marchiori: <br>
 &nbsp; &nbsp; - Mail: matteo.marchiori03@gmail.com
 <br>
 
-Project Link: https://github.com/Fb1234566/ERPC.git
 
 <p align="right">(<a href="#readme-erpc">back to top</a>)</p>
