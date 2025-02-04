@@ -20,7 +20,7 @@
     <li><a href="#project-introduction">Project introduction</a></li>
     <li><a href="#built-with">Built with</a>
     <ol>
-    <li><a href="#software requirements">Software requirements</a></li>
+    <li><a href="#software-requirements">Software requirements</a></li>
     <li><a href="#hardware-requirements">Hardware requirements</a></li>
     </ol></li>
     <li><a href="#setting-up-the-hardware">Setting up the hardware</a></li>
@@ -55,8 +55,8 @@
 
 <!-- PROJECT INTRODUCTION -->
 ## Project introduction
-We've all been there at least once, watching a movie on our computer while sitting on the bed. In these moments, simple actions like adjusting the volume or pausing the movie can be annoying. That's why we came up with the ERPC project (Essential Remote PC Control), a device built with the Texas Instruments MSP432P401R board, the educational boosterpack MKII and the ESP32. By using the joystick and some buttons, the remote control can emulate mouse functions, control the computer's volume, and exit full-screen mode (ESC). 
-These are just some of the functions the remote control can perform. By adding the appropriate sensors, many other features could be integrated, such as voice search through a microphone or the inclusion of a touch screen. <br>
+We've all been there at least once, watching a movie on our computer while sitting on the bed. In these moments, simple actions like adjusting the volume or pausing the movie can be annoying. That's why we came up with the ERPC project (Essential Remote PC Control), a device built with the Texas Instruments MSP432P401R board, the educational boosterpack MKII and the ESP32. By using the joystick and some buttons, the remote control can emulate mouse functions, control the computer's volume, and exit full-screen mode (ESC). <br>
+These are just some of the functions the remote control can perform. <br> By adding the appropriate sensors, many other features could be integrated, such as voice search through a microphone or the inclusion of a touch screen. <br>
 <br>
 Project Link: https://github.com/Fb1234566/ERPC.git <br>
 
@@ -73,9 +73,9 @@ Python
 
 <h3 style="margin-left: 20px;" id="software-requirements">Software requirements</h3>
 <p style="margin-left: 40px;">Software required to program the boards: <br>
-  → visual studio code: https://code.visualstudio.com/download <br>
-  → code composer studio: https://www.ti.com/tool/download/CCSTUDIO/12.7.0 <br>
-  → arduino id (per ESP32): https://www.arduino.cc/en/software 
+ &nbsp; &nbsp; → visual studio code: https://code.visualstudio.com/download <br>
+ &nbsp; &nbsp; → code composer studio: https://www.ti.com/tool/download/CCSTUDIO/12.7.0 <br>
+ &nbsp; &nbsp; → arduino id (per ESP32): https://www.arduino.cc/en/software 
 </p>
 
 <h3 style="margin-left: 20px;" id="hardware-requirements">Hardware requirements</h3>
