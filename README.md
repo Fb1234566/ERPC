@@ -103,7 +103,8 @@ Python
 
 <!-- PROJECT STRUCTURE -->
 ## Project structure
-MSP432_Project
+<pre>
+ERPC_project
     ├── Debug                  # Compiled files 
     ├── Hardware               # Hardware related files
     │   ├── Wifi               # Manages Wifi connection
@@ -115,7 +116,7 @@ MSP432_Project
     ├── targetConfigs          # Target configuration files
     ├── main.c                 # Main source code
     └── README.md
-
+</pre>
 <br>
 
 <p align="right">(<a href="#readme-erpc">back to top</a>)</p>
