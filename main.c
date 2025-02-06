@@ -23,8 +23,8 @@ const eUSCI_UART_ConfigV1 uartConfig =
 
 /* ADC results buffer */
 uint16_t adcResults[3];  // X, Y, Potenziometro
-uint8_t xPosition = 64, yPosition = 64;  // Posizione joystick
-uint16_t prevXPosition = 0xFFFF, prevYPosition = 0xFFFF, prevPotPercent = 0xFFFF;  // Per evitare invii ridondanti
+uint8_t xPosition = 64, yPosition = 64;
+uint16_t prevXPosition = 0xFFFF, prevYPosition = 0xFFFF, prevPotPercent = 0xFFFF;
 
 /* Inizializza ADC per Joystick (X,Y) e Potenziometro */
 void initializeADC() {
@@ -74,7 +74,6 @@ void initializeHardware() {
     GPIO_enableInterrupt(GPIO_PORT_P4, GPIO_PIN1 | GPIO_PIN2 | GPIO_PIN3 | GPIO_PIN5);
     Interrupt_enableInterrupt(INT_PORT4);
 
-    // Configura LED su P1.0
     GPIO_setAsOutputPin(GPIO_PORT_P1, GPIO_PIN0);
     GPIO_setOutputLowOnPin(GPIO_PORT_P1, GPIO_PIN0);
 }
@@ -87,7 +86,6 @@ void sendUARTData(SensorData data) {
     for (i = 0; buffer[i] != '\0'; i++) {
         UART_transmitData(EUSCI_A0_BASE, buffer[i]);
     }
-    // Accende il LED per indicare un input
     GPIO_setOutputHighOnPin(GPIO_PORT_P1, GPIO_PIN0);
 }
 
@@ -125,11 +123,22 @@ void ADC14_IRQHandler(void) {
     }
 }
 
+/* Interrupt Handler Pulsanti */
+void PORT4_IRQHandler(void) {
+    uint32_t status = GPIO_getEnabledInterruptStatus(GPIO_PORT_P4);
+    GPIO_clearInterruptFlag(GPIO_PORT_P4, status);
+
+    if (status & GPIO_PIN1) sendUARTData((SensorData){3, 1});
+    if (status & GPIO_PIN2) sendUARTData((SensorData){4, 1});
+    if (status & GPIO_PIN3) sendUARTData((SensorData){5, 1});
+    if (status & GPIO_PIN5) sendUARTData((SensorData){6, 1});
+}
+
 /* Funzione principale */
 int main(void) {
     initializeHardware();
     while (1) {
         PCM_gotoLPM0();
-        GPIO_setOutputLowOnPin(GPIO_PORT_P1, GPIO_PIN0); // Spegne LED dopo input
+        GPIO_setOutputLowOnPin(GPIO_PORT_P1, GPIO_PIN0);
     }
 }
