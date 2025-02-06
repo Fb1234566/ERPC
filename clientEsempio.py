@@ -17,7 +17,6 @@ def send_data(action, value):
     print(f"Inviato azione {action} con valore {value}")
 
 # Simulazione invio dati
-actions = [1, 2, 3]  # Possibili azioni corrispondenti ai pulsanti
 send_data(1, 300)
 time.sleep(0.5)
 send_data(2, 300)
