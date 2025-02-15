@@ -62,7 +62,6 @@ def event_handler():
 
             case 2:
                 if os.name == 'nt':
-                
                     comtypes.CoInitialize()  # Inizializza la libreria COM per il thread
                     set_volume(value)          # Chiama la funzione per impostare il volume
                     comtypes.CoUninitialize()
