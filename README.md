@@ -27,8 +27,8 @@
     <li><a href="#project-structure">Project structure</a></li>
     <li><a href="#functionalities">Functionalities</a></li>
     <li><a href="#user-guide">User guide</a></li>
-    <li><a href="#video-and-presentation">Video and presentation</a></li>
-    <li><a href="#references">References</a></li>
+    <li><a href="#useful-links">Useful links</a></li>
+    <li><a href="#future-upgrades">Future upgrades</a></li>
     <li><a href="#team-members">Team members</a></li>
   </ol>
 </details>
@@ -109,9 +109,11 @@ The installed microcontroller requires a power supply between 3.5V and 5V to fun
 <pre>
 ESP32 project
   ├── esp filippo                      
-  ├── SERVERPC                   #PC connection
-       ├── Server.py               
-       └── client_Esempio.py
+  
+
+ServerPC	              #server/client communication
+  ├── Server.py               #UDP connection between MSP432P401R and ESP32
+  └── clientEsempio.py        #simulation commands UDP client
 
 
 MSP432P401R project
@@ -135,15 +137,17 @@ MSP432P401R project
   <li>Initial connection and network setup</li>
   <li>PC control
     <ol>
-      <li>Left button: pin P4.1</li>
-      <li>Right button: pin P4.2</li>
-      <li>Esc button: pin P4.3</li>
+      <li>Left button: </li>
+      <li>Right button: </li>
+      <li>Esc button: </li>
       <li>Joystick: cursor movement</li></ol></li>
-      <li>Volume control (with a potentiometer)</li>
-      <li>Opening the virtual keyboard: pin P4.5</li>
-      <li>Connection monitoring (per ora no schermo, quindi omettere questo punto)</li>
+      <li>Volume control (with a potentiometer, pin P4.7)</li>
+      <li>Opening the virtual keyboard: </li>
 </ol>
-<br>Upon system startup, the ESP32 establishes a socket connection to the PC by using a WiFi network. Once the communication is established, the commands sent by the MSP432P401R (mouse buttons, volume control, virtual keyboard opening, esc) are received by the ESP32, which transmits them to the computer to perform the desired actions.
+<br>On the MSP432, the buttons are configured and linked to the respective pins described above. <br>
+When a button is pressed, so a specific action is activated, it transmits the command to the ESP32, which then becomes a real action. <br>
+Depending on the button, I can trigger actions such as mouse buttons, volume control, escape button, and virtual keyboard opening.
+
 
 <br>
 
@@ -151,12 +155,64 @@ MSP432P401R project
 
 <!-- USER GUIDE -->
 ## User guide
+### Configuring the Python Server (`Server.py`)
+
+In the `Server.py` file, you need to set the IP address and port where the server will receive data from the ESP-EYE.
+
+#### Modifying the Settings
+Locate these lines in the file:
+```python
+# Server settings
+UDP_IP = "0.0.0.0"  # Listen on all network interfaces
+UDP_PORT = 5006      # Listening port
+```
+
+#### Changing the IP
+If you want to specify a precise server IP (e.g., `192.168.1.100`), modify the line as follows:
+```python
+UDP_IP = "192.168.1.100"
+```
+Ensure that the PC is connected to the same network as the ESP-EYE.
 <br>
+<br>
+### Configuring the ESP-EYE Client (`esp.ino`)
+
+In the `esp.ino` file, you need to specify:
+- SSID and password of the WiFi network
+- The IP address of the Python server
+
+Find these lines:
+```cpp
+const char* ssid = "";         // your wifi ssid
+const char* password = "";     // your wifi password
+const char* hostname = "ERPC"; // the host name of this device
+const char serverAddr[] = "";  // the address of the server (local ip address)
+```
+
+#### Setting Up WiFi Connection
+Enter your WiFi network details:
+```cpp
+const char* ssid = "YourSSID";
+const char* password = "YourPassword";
+```
+
+#### Setting the Server IP Address
+Modify `serverAddr` with the IP set in `Server.py`, for example:
+```cpp
+const char serverAddr[] = "192.168.1.100";
+```
+<br>
+
+### Network Considerations
+- **The PC and ESP-EYE must be on the same local network**. If the ESP-EYE is connected via WiFi, the PC must be on the same WiFi or LAN network.
+- **If the Python server is on a different network**, you must configure **port forwarding** on the router to forward traffic on port `5006` to the server's IP.
+
+Following these steps, your ESP-EYE will be able to communicate correctly with the Python server.
 
 <p align="right">(<a href="#readme-erpc">back to top</a>)</p>
 
-<!-- VIDEO AND PRESENTATION -->
-## Video and presentation
+<!-- USEFUL LINKS -->
+## Useful links
 Video: 
 <br> Presentation: 
 <br> Project link: https://github.com/Fb1234566/ERPC.git
@@ -164,8 +220,16 @@ Video:
 
 <p align="right">(<a href="#readme-erpc">back to top</a>)</p>
 
-<!-- REFERENCES -->
-## References
+<!-- FUTURE UPGRADES -->
+## Future upgrades
+<p style="margin-left: 40px;"> Some of the possible future updates are listed below:  
+
+* **Default IP address for connection**: ensure the device connects only to networks with specific IP addresses to limit connections to authorized devices.
+* **Encrypted connection**: implement a secure connection to protect the data travelling over the network, by using a protocol like TLS/SSL.
+* **Support for additional hardware functions**: add support for other hardware devices, such as motion sensors or pressure sensors, which could be used for further interactions.
+* **Visual feedback via screen**: add a screen to the system to provide real-time information, such as connection status.
+
+</p>
 <br>
 
 <p align="right">(<a href="#readme-erpc">back to top</a>)</p>
@@ -173,25 +237,25 @@ Video:
 
 <!-- TEAM MEMBERS -->
 ## Team members
-Beatrice Faccioli: <br>
+Beatrice Faccioli <br>
 &nbsp; &nbsp; - Contributed on looking for codes that could be useful for the project <br>
-&nbsp; &nbsp; - Managed the button for the virtual keyboard and the LCD screen <br>
+&nbsp; &nbsp; - Managed the button for the virtual keyboard <br>
 &nbsp; &nbsp; - Managed the documentation, presentation and video <br>
 &nbsp; &nbsp; - Mail: beatricefaccioli.v@gmail.com
 <br> <br>
-Filippo Benedetti: <br>
+Filippo Benedetti <br>
 &nbsp; &nbsp; - Contributed on the creation of the container for the MSP432P401R and ESP32 <br>
 &nbsp; &nbsp; - Managed the configuration of the potentiometer <br>
 &nbsp; &nbsp; - Contributed in the development of a protocol to transmit the values through a socket connection <br>
 &nbsp; &nbsp; - Mail: filippo.benedetti3@gmail.com
 <br><br>
-Lucia Pecora: <br>
+Lucia Pecora <br>
 &nbsp; &nbsp; - Contributed on power supply of the boards <br>
 &nbsp; &nbsp; - Worked on the configuration of the pins for the right, esc button and LED <br>
 &nbsp; &nbsp; - Managed the documentation, the presentation and the video <br>
 &nbsp; &nbsp; - Mail: luciapecora01@gmail.com
 <br> <br>
-Matteo Marchiori: <br>
+Matteo Marchiori <br>
 &nbsp; &nbsp; - Contributed on searching libraries and code examples in python for socket communication <br>
 &nbsp; &nbsp; - Worked on the configuration of the joystick movement and left button <br>
 &nbsp; &nbsp; - Contributed in the development of a protocol to transmit the values through a socket connection <br>
