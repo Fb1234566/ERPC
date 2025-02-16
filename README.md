@@ -84,7 +84,7 @@ Python
 * Texas Instruments MSP432P401R microcontroller 
 * Educational BoosterPack MKII 
 * ESP-EYE (ESP32) 
-* Computer
+* Server with Python (PC)
 * Items for supply (3 batteries AA, copper or tin, insulating tape and electrical wires)
 * Additional buttons and potentiometer (welded to one perfboard)
 * Items for the box (plywood, screws)
@@ -107,10 +107,7 @@ The installed microcontroller requires a power supply between 3.5V and 5V to fun
 <!-- PROJECT STRUCTURE -->
 ## Project structure
 <pre>
-ESP32 project
-  ├── esp filippo                      
-  
-
+                    
 ServerPC	              #server/client communication
   ├── Server.py               #UDP connection between MSP432P401R and ESP32
   └── clientEsempio.py        #simulation commands UDP client
@@ -137,12 +134,12 @@ MSP432P401R project
   <li>Initial connection and network setup</li>
   <li>PC control
     <ol>
-      <li>Left button: </li>
-      <li>Right button: </li>
-      <li>Esc button: </li>
+      <li>Left button </li>
+      <li>Right button </li>
+      <li>Esc button </li>
       <li>Joystick: cursor movement</li></ol></li>
-      <li>Volume control (with a potentiometer, pin P4.7)</li>
-      <li>Opening the virtual keyboard: </li>
+      <li>Volume control (with a potentiometer)</li>
+      <li>Opening the virtual keyboard </li>
 </ol>
 <br>On the MSP432, the buttons are configured and linked to the respective pins described above. <br>
 When a button is pressed, so a specific action is activated, it transmits the command to the ESP32, which then becomes a real action. <br>
@@ -214,7 +211,7 @@ Following these steps, your ESP-EYE will be able to communicate correctly with t
 <!-- USEFUL LINKS -->
 ## Useful links
 Video: 
-<br> Presentation: 
+<br> Presentation: https://docs.google.com/presentation/d/19nrmPo_cfdzsf_OgY83WP35AMC174QLg/edit?usp=sharing&ouid=112294706705879927242&rtpof=true&sd=true
 <br> Project link: https://github.com/Fb1234566/ERPC.git
 <br>
 
@@ -226,7 +223,7 @@ Video:
 
 * **Default IP address for connection**: ensure the device connects only to networks with specific IP addresses to limit connections to authorized devices.
 * **Encrypted connection**: implement a secure connection to protect the data travelling over the network, by using a protocol like TLS/SSL.
-* **Support for additional hardware functions**: add support for other hardware devices, such as motion sensors or pressure sensors, which could be used for further interactions.
+* **Support for additional hardware functions**: add support for other hardware devices, such as motion sensors or pressure sensors; or even a microphone for voice control.
 * **Visual feedback via screen**: add a screen to the system to provide real-time information, such as connection status.
 
 </p>
