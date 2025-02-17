@@ -248,7 +248,7 @@ Filippo Benedetti <br>
 <br><br>
 Lucia Pecora <br>
 &nbsp; &nbsp; - Contributed on power supply of the boards <br>
-&nbsp; &nbsp; - Worked on the configuration of the pins for the right, esc button and LED <br>
+&nbsp; &nbsp; - Worked on the configuration of the pins for the right and esc button <br>
 &nbsp; &nbsp; - Managed the documentation, the presentation and the video <br>
 &nbsp; &nbsp; - Mail: luciapecora01@gmail.com
 <br> <br>
