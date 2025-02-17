@@ -42,22 +42,13 @@ void setup() {
 
   Serial.begin(115200);
   delay(1000);
-  Serial.println("SPI Slave Example Starting...");
   
   WiFi.setHostname(hostname);  // set the hostname of the device
   WiFi.begin(ssid, password);  // connect to the wifi network
 
-  Serial.println("\nConnecting");
-
   while (WiFi.status() != WL_CONNECTED) {  // wait until it connected to the wifi
-    Serial.print(".");
     delay(100);
   }
-
-
-  Serial.println("\nConnected to the WiFi network");
-  Serial.print("Local device IP: ");
-  Serial.println(WiFi.localIP());  // print the local ip address
 
   // Initialize the txBuffer with some example data
   for (int i = 0; i < TRANSFER_SIZE; i++) {
@@ -128,17 +119,7 @@ void loop() {
   esp_err_t ret = spi_slave_get_trans_result(HSPI_HOST, &spiTransPtr, portMAX_DELAY);
   Serial.println(ret);
   if (ret == ESP_OK) {
-    //spi_slave_transmit(HSPI_HOST, &spiTrans, portMAX_DELAY);
-    //receivedData = (SensorData)rxBuffer;
-    memcpy(&receivedData, &rxBuffer, TRANSFER_SIZE);
-    // Print the received integer
-    Serial.println("Received struct from master: ");
-    Serial.print("Action type:");
-    Serial.println(receivedData.actionType);
-    Serial.print("Value:");
-    Serial.println(receivedData.value);
-    Serial.print("Value1:");
-    Serial.println(receivedData.value1);
+    // Send data via UDP
     sendData(rxBuffer);
     
     // Reinitialize the transaction structure for the next transfer
