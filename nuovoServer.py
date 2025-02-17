@@ -52,39 +52,21 @@ def press_left_click():
     pyautogui.click()
 
 def open_virtual_keyboard():
-<<<<<<< Updated upstream
     """Opens the virtual keyboard on the system."""
-    subprocess.run('osk', shell=True)
-
-def update_mouse_position(x, y):
-    """Updates the mouse position."""
-    global prev_x, prev_y
-    prev_x = x
-    prev_y = y
-
-def move_mouse():
-    """Moves the mouse to the previously updated position."""
-    while True:
-        pyautogui.move(prev_x, prev_y, duration=0.0001)
-=======
     if os.name=="nt":
         subprocess.run('osk', shell=True)
     if os.name=="posix":
         oskstatus = subprocess.check_output("gsettings get org.gnome.desktop.a11y.applications screen-keyboard-enabled", shell=True)
-        print(oskstatus)
         if (oskstatus == b"false\n"):
             subprocess.run("gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled true", shell=True)
-        if (oskstatus == b"true\n"):
+        elif (oskstatus == b"true\n"):
             subprocess.run("gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled false", shell=True)
-
 
 def updateXY(val, val1):
     global prev_x, prev_y
 
     prev_x = val
     prev_y = val1
-
-    print(val , val1)
 
 def moveXY():
     while True:
@@ -95,7 +77,6 @@ def moveXY():
             prev_y = 0
 
         pyautogui.move(2*prev_x, -2*prev_y, duration=0.001)
->>>>>>> Stashed changes
 
 def press_escape():
     """Simulates pressing the Escape key."""
@@ -106,35 +87,28 @@ def event_handler():
     while True:
         action, value, value1, addr = event_queue.get()
         print(f"Received action {action} with values {value} and {value1}\n")
-
-<<<<<<< Updated upstream
         # Process the action based on its type
-        if action == 1:
-            update_mouse_position(value - 63, value1 - 63)
-        elif action == 2:
-            # Adjust volume
-            if os.name == 'nt':
-                comtypes.CoInitialize()  # Initialize COM library for the thread
-                set_volume(value)        # Set the volume
-                comtypes.CoUninitialize()
-            elif os.name == 'posix':
-                set_volume(value)
-        elif action == 3:
-            press_left_click()
-        elif action == 4:
-            press_right_click()
-        elif action == 5:
-            open_virtual_keyboard()
-        elif action == 6:
-            press_escape()
-        else:
-            print("Unrecognized command")
-=======
         match action:
             case 1:
-
                 updateXY(value-63, value1-63)
->>>>>>> Stashed changes
+            case 2:
+                # Adjust volume
+                if os.name == 'nt':
+                    comtypes.CoInitialize()  # Initialize COM library for the thread
+                    set_volume(value)        # Set the volume
+                    comtypes.CoUninitialize()
+                elif os.name == 'posix':
+                    set_volume(value)
+            case 3:
+                press_left_click()
+            case 4:
+                press_right_click()
+            case 5:
+                open_virtual_keyboard()
+            case 6:
+                press_escape()
+            case _:
+                print("Unrecognized command")
 
         event_queue.task_done()
 
@@ -143,15 +117,11 @@ def receive_data():
     while True:
         data, addr = server_socket.recvfrom(BUFFER_SIZE)  # Receive data from the network
         if len(data) == BUFFER_SIZE:
-<<<<<<< Updated upstream
-            action, value, value2 = struct.unpack('<Bff', data)  # Unpack the received data (int, float)
-            event_queue.put((action, value, value2, addr))
-=======
             action, value, value2 = struct.unpack('<Bff', data)  # Converte i dati ricevuti (int, float)
             if not ((value > 200 or value < 0.1 or value2 > 200 or value2 < 0.1) and action not in (2,3,4,5,6)):
                 event_queue.put((action, value, value2, addr))
 
->>>>>>> Stashed changes
+
         else:
             print("Invalid data received")
 
@@ -160,7 +130,7 @@ event_thread = threading.Thread(target=event_handler, daemon=True)
 event_thread.start()
 
 # Thread for mouse movement
-mouse_move_thread = threading.Thread(target=move_mouse, daemon=True)
+mouse_move_thread = threading.Thread(target=moveXY, daemon=True)
 mouse_move_thread.start()
 
 # Start the data receiving thread
