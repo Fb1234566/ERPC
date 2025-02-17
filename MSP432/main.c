@@ -38,6 +38,10 @@ uint16_t previousX = 0xFFFF, previousY = 0xFFFF, previousPot = 0xFFFF;  // To pr
 
 /* Initialize ADC for Joystick (X, Y) and Potentiometer */
 void initializeADC() {
+
+    int delay;
+    for(delay=0; delay<50000; delay++);
+
     // Configure ADC pins
     GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P6, GPIO_PIN0, GPIO_TERTIARY_MODULE_FUNCTION);
     GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P4, GPIO_PIN4, GPIO_TERTIARY_MODULE_FUNCTION);
@@ -113,6 +117,11 @@ void initializeHardware() {
     GPIO_clearInterruptFlag(GPIO_PORT_P5, GPIO_PIN1);
     GPIO_enableInterrupt(GPIO_PORT_P5, GPIO_PIN1);
     Interrupt_enableInterrupt(INT_PORT5);
+
+    GPIO_setAsInputPinWithPullUpResistor(GPIO_PORT_P6, GPIO_PIN7);
+    GPIO_clearInterruptFlag(GPIO_PORT_P6, GPIO_PIN7);
+    GPIO_enableInterrupt(GPIO_PORT_P6, GPIO_PIN7);
+    Interrupt_enableInterrupt(INT_PORT6);
 }
 
 /* Send data via SPI */
@@ -122,9 +131,9 @@ void sendSPIData(SensorData data) {
 
     uint8_t buffer[sizeof(SensorData)];
     memcpy(buffer, &data, sizeof(SensorData));
-
+    int i;
     // Send each byte of the data structure
-    for (int i = 0; i < sizeof(SensorData); i++) {
+    for (i = 0; i < sizeof(SensorData); i++) {
         SPI_transmitData(EUSCI_B0_BASE, buffer[i]);
     }
 
@@ -182,6 +191,12 @@ void PORT5_IRQHandler(void) {
     if (status & GPIO_PIN1) sendSPIData((SensorData){5, 0.0f, 0.0f});
 }
 
+void PORT6_IRQHandler(void) {
+    uint32_t status = GPIO_getEnabledInterruptStatus(GPIO_PORT_P6);
+    GPIO_clearInterruptFlag(GPIO_PORT_P6, status);
+    if (status & GPIO_PIN7) sendSPIData((SensorData){6, 0.0f, 0.0f});
+}
+
 /* Main Function */
 int main(void) {
     initializeHardware();
@@ -189,3 +204,4 @@ int main(void) {
         PCM_gotoLPM0();  // Go into low power mode
     }
 }
+
