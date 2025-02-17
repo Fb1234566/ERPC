@@ -82,6 +82,7 @@ Python
  &nbsp; &nbsp; → visual studio code: https://code.visualstudio.com/download <br>
  &nbsp; &nbsp; → code composer studio: https://www.ti.com/tool/download/CCSTUDIO/12.7.0 <br>
  &nbsp; &nbsp; → arduino ide (for ESP32): https://www.arduino.cc/en/software 
+ &nbsp; &nbsp; → only for linux install Libasound2 dev with the command: "apt-get install libasound2-dev"
 </p>
 
 <h3 style="margin-left: 20px;" id="hardware-requirements">Hardware requirements</h3>
@@ -216,6 +217,13 @@ const char serverAddr[] = "192.168.1.100";
 - **If the Python server is on a different network**, you must configure **port forwarding** on the router to forward traffic on port `5006` to the server's IP.
 
 Following these steps, your ESP-EYE will be able to communicate correctly with the Python server.
+
+### Install the library on linux
+You need to run two commands
+```cpp
+python3 setup.py build
+python3 setup.py install
+```
 
 <p align="right">(<a href="#readme-erpc">back to top</a>)</p>
 
