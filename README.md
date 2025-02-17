@@ -222,7 +222,7 @@ Following these steps, your ESP-EYE will be able to communicate correctly with t
 <!-- USEFUL LINKS -->
 ## Useful links
 Video: 
-<br> Presentation: ERPC.pptx
+<br> Presentation: [ERPC.pptx](https://docs.google.com/presentation/d/1srpceYGneGkNDBblu5enkKkrtPL8FoVE/edit?usp=sharing&ouid=112294706705879927242&rtpof=true&sd=true)
 <br> Project link: https://github.com/Fb1234566/ERPC.git
 <br>
 
