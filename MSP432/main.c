@@ -126,14 +126,16 @@ void initializeHardware() {
     GPIO_enableInterrupt(GPIO_PORT_P5, GPIO_PIN1);
     Interrupt_enableInterrupt(INT_PORT5);
 
-
-    // Configura LED su P1.0
-    GPIO_setAsOutputPin(GPIO_PORT_P1, GPIO_PIN0);
-    GPIO_setOutputLowOnPin(GPIO_PORT_P1, GPIO_PIN0);
+    // Pushbutton esterno
+    GPIO_setAsInputPinWithPullUpResistor(GPIO_PORT_P6, GPIO_PIN7);
+    GPIO_clearInterruptFlag(GPIO_PORT_P6, GPIO_PIN7);
+    GPIO_enableInterrupt(GPIO_PORT_P6, GPIO_PIN7);
+    Interrupt_enableInterrupt(INT_PORT6);
 }
 
 /* Invia dati SPI */
 void sendSPIData(SensorData data) {
+    GPIO_setOutputLowOnPin(GPIO_PORT_P2, GPIO_PIN0); // Spegne LED dopo input
     while (!(SPI_getInterruptStatus(EUSCI_B0_BASE, EUSCI_B_SPI_TRANSMIT_INTERRUPT)));
     GPIO_setOutputLowOnPin(5, 2);
     uint8_t buffer[sizeof(SensorData)];
@@ -145,9 +147,6 @@ void sendSPIData(SensorData data) {
     }
 
     GPIO_setOutputHighOnPin(5, 2);
-    // Accende il LED per indicare un input
-    GPIO_setOutputHighOnPin(GPIO_PORT_P1, GPIO_PIN0);
-
 }
 
 /* Interrupt Handler ADC */
@@ -201,13 +200,19 @@ void PORT5_IRQHandler(void) {
 
     if (status & GPIO_PIN1) sendSPIData((SensorData){5, (float)0.0, (float)0.0});
 }
+/* Interrupt Handler Pulsanti */
+void PORT6_IRQHandler(void) {
+    uint32_t status = GPIO_getEnabledInterruptStatus(GPIO_PORT_P6);
+    GPIO_clearInterruptFlag(GPIO_PORT_P6, status);
+
+    if (status & GPIO_PIN7) sendSPIData((SensorData){6, (float)0.0, (float)0.0});
+}
 
 /* Funzione principale */
 int main(void) {
     initializeHardware();
     while (1) {
         PCM_gotoLPM0();
-        GPIO_setOutputLowOnPin(GPIO_PORT_P1, GPIO_PIN0); // Spegne LED dopo input
     }
 }
 
