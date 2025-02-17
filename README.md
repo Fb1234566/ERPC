@@ -81,7 +81,7 @@ Python
 <p style="margin-left: 40px;">Software required to program the boards: <br>
  &nbsp; &nbsp; → visual studio code: https://code.visualstudio.com/download <br>
  &nbsp; &nbsp; → code composer studio: https://www.ti.com/tool/download/CCSTUDIO/12.7.0 <br>
- &nbsp; &nbsp; → arduino ide (for ESP32): https://www.arduino.cc/en/software 
+ &nbsp; &nbsp; → arduino ide (for ESP32): https://www.arduino.cc/en/software <br>
  &nbsp; &nbsp; → only for linux install Libasound2 dev with the command: "apt-get install libasound2-dev"
 </p>
 
