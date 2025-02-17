@@ -19,6 +19,7 @@ if os.name == 'posix':
 UDP_IP = "0.0.0.0"
 UDP_PORT = 5006
 BUFFER_SIZE = 9
+pyautogui.FAILSAFE = False
 
 # Variables for tracking mouse position
 prev_x = 0
@@ -51,6 +52,7 @@ def press_left_click():
     pyautogui.click()
 
 def open_virtual_keyboard():
+<<<<<<< Updated upstream
     """Opens the virtual keyboard on the system."""
     subprocess.run('osk', shell=True)
 
@@ -64,6 +66,36 @@ def move_mouse():
     """Moves the mouse to the previously updated position."""
     while True:
         pyautogui.move(prev_x, prev_y, duration=0.0001)
+=======
+    if os.name=="nt":
+        subprocess.run('osk', shell=True)
+    if os.name=="posix":
+        oskstatus = subprocess.check_output("gsettings get org.gnome.desktop.a11y.applications screen-keyboard-enabled", shell=True)
+        print(oskstatus)
+        if (oskstatus == b"false\n"):
+            subprocess.run("gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled true", shell=True)
+        if (oskstatus == b"true\n"):
+            subprocess.run("gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled false", shell=True)
+
+
+def updateXY(val, val1):
+    global prev_x, prev_y
+
+    prev_x = val
+    prev_y = val1
+
+    print(val , val1)
+
+def moveXY():
+    while True:
+        global prev_x, prev_y
+        if (prev_x < 10 and prev_x > -10):
+            prev_x = 0
+        if (prev_y < 10 and prev_y > -10):
+            prev_y = 0
+
+        pyautogui.move(2*prev_x, -2*prev_y, duration=0.001)
+>>>>>>> Stashed changes
 
 def press_escape():
     """Simulates pressing the Escape key."""
@@ -75,6 +107,7 @@ def event_handler():
         action, value, value1, addr = event_queue.get()
         print(f"Received action {action} with values {value} and {value1}\n")
 
+<<<<<<< Updated upstream
         # Process the action based on its type
         if action == 1:
             update_mouse_position(value - 63, value1 - 63)
@@ -96,6 +129,12 @@ def event_handler():
             press_escape()
         else:
             print("Unrecognized command")
+=======
+        match action:
+            case 1:
+
+                updateXY(value-63, value1-63)
+>>>>>>> Stashed changes
 
         event_queue.task_done()
 
@@ -104,8 +143,15 @@ def receive_data():
     while True:
         data, addr = server_socket.recvfrom(BUFFER_SIZE)  # Receive data from the network
         if len(data) == BUFFER_SIZE:
+<<<<<<< Updated upstream
             action, value, value2 = struct.unpack('<Bff', data)  # Unpack the received data (int, float)
             event_queue.put((action, value, value2, addr))
+=======
+            action, value, value2 = struct.unpack('<Bff', data)  # Converte i dati ricevuti (int, float)
+            if not ((value > 200 or value < 0.1 or value2 > 200 or value2 < 0.1) and action not in (2,3,4,5,6)):
+                event_queue.put((action, value, value2, addr))
+
+>>>>>>> Stashed changes
         else:
             print("Invalid data received")
 
