@@ -6,6 +6,12 @@
 
 <h3 align="center">ERPC</h3>
 
+
+
+<img src="ERPC_photo.jpg" alt="Logo" width="300" height="250">
+<br>
+
+
  <p align="center">
   Essential Remote PC Controller
   <br />
