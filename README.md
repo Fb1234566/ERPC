@@ -33,8 +33,8 @@
     <li><a href="#project-structure">Project structure</a></li>
     <li><a href="#functionalities">Functionalities</a></li>
     <li><a href="#user-guide">User guide</a></li>
-    <li><a href="#useful-links">Useful links</a></li>
     <li><a href="#future-upgrades">Future upgrades</a></li>
+    <li><a href="#useful-links">Useful links</a></li>
     <li><a href="#team-members">Team members</a></li>
   </ol>
 </details>
@@ -104,7 +104,7 @@ Python
 ## Setting up the hardware
 The installed microcontroller requires a power supply between 3.5V and 5V to function properly. During testing, it was found that 3.5V is not sufficient to power all components. To solve this issue, three 1.5V batteries were connected in series, resulting in a total voltage of 4.5V. The assembly was carried out using electrical tape, copper wires to connect the batteries, and electrical cables to link them to the board’s power input pin.
 <br>There is no need to worry about components that support a maximum of 3.5V, as they are equipped with voltage regulation circuits. In fact, the presence of resistors ensures that the input voltage is reduced when necessary.
-<br>As for the ESP32, it is powered directly by the board through the 5V output pins, using electrical wires for the connection.
+<br>As for the ESP-EYE, it is powered directly by the board through the 5V output pins, using electrical wires for the connection.
 <br>A button and a potentiometer still need to be connected. They are mounted on a breadboard and soldered with tin to ensure greater stability. Finally, the entire circuit has been placed inside a plywood box, making it more convenient to use and transport.
 
 <br>
@@ -154,7 +154,7 @@ MSP432P401R project
       <li>Opening the virtual keyboard </li>
 </ol>
 <br>On the MSP432, the buttons are configured and linked to the respective pins described above. <br>
-When a button is pressed, so a specific action is activated, it transmits the command to the ESP32, which then becomes a real action. <br>
+When a button is pressed, so a specific action is activated, it transmits the command to the ESP-EYE, which then becomes a real action. <br>
 Depending on the button, I can trigger actions such as mouse buttons, volume control, escape button, and virtual keyboard opening.
 
 
@@ -217,6 +217,9 @@ const char serverAddr[] = "192.168.1.100";
 - **If the Python server is on a different network**, you must configure **port forwarding** on the router to forward traffic on port `5006` to the server's IP.
 
 Following these steps, your ESP-EYE will be able to communicate correctly with the Python server.
+<br>
+<br>
+
 
 ### Install the library on linux
 You need to run two commands
@@ -224,15 +227,6 @@ You need to run two commands
 python3 setup.py build
 python3 setup.py install
 ```
-
-<p align="right">(<a href="#readme-erpc">back to top</a>)</p>
-
-<!-- USEFUL LINKS -->
-## Useful links
-Video: [https://drive.google.com/file/d/1agivKv0jqHUVvvNMQd2S5w90nPasPmut/view?usp=sharing](https://drive.google.com/file/d/1vc2E4uRM63oCAUw0LnEkV0MCEFqxgfME/view?usp=sharing)
-<br> Presentation: [ERPC.pptx](https://docs.google.com/presentation/d/1srpceYGneGkNDBblu5enkKkrtPL8FoVE/edit?usp=sharing&ouid=112294706705879927242&rtpof=true&sd=true)
-<br> Project link: https://github.com/Fb1234566/ERPC.git
-<br>
 
 <p align="right">(<a href="#readme-erpc">back to top</a>)</p>
 
@@ -250,33 +244,43 @@ Video: [https://drive.google.com/file/d/1agivKv0jqHUVvvNMQd2S5w90nPasPmut/view?u
 
 <p align="right">(<a href="#readme-erpc">back to top</a>)</p>
 
+<!-- USEFUL LINKS -->
+## Useful links
+Video: [https://drive.google.com/file/d/1agivKv0jqHUVvvNMQd2S5w90nPasPmut/view?usp=sharing](https://drive.google.com/file/d/1vc2E4uRM63oCAUw0LnEkV0MCEFqxgfME/view?usp=sharing)
+<br> Presentation: [ERPC.pptx](https://docs.google.com/presentation/d/1srpceYGneGkNDBblu5enkKkrtPL8FoVE/edit?usp=sharing&ouid=112294706705879927242&rtpof=true&sd=true)
+<br> Project link: https://github.com/Fb1234566/ERPC.git
+<br>
+
+<p align="right">(<a href="#readme-erpc">back to top</a>)</p>
+
 
 <!-- TEAM MEMBERS -->
 ## Team members
+Filippo Benedetti <br>
+&nbsp; &nbsp; - Contributed on the creation of the container for the MSP432P401R and ESP-EYE <br>
+&nbsp; &nbsp; - Managed the configuration of the potentiometer <br>
+&nbsp; &nbsp; - Contributed in the development of a protocol to transmit the values through a socket connection <br>
+&nbsp; &nbsp; - Mail: filippo.benedetti3@gmail.com
+<br><br>
 Beatrice Faccioli <br>
 &nbsp; &nbsp; - Contributed on looking for codes that could be useful for the project <br>
 &nbsp; &nbsp; - Managed the button for the virtual keyboard <br>
 &nbsp; &nbsp; - Managed the documentation, presentation and video <br>
 &nbsp; &nbsp; - Mail: beatricefaccioli.v@gmail.com
 <br> <br>
-Filippo Benedetti <br>
-&nbsp; &nbsp; - Contributed on the creation of the container for the MSP432P401R and ESP32 <br>
-&nbsp; &nbsp; - Managed the configuration of the potentiometer <br>
-&nbsp; &nbsp; - Contributed in the development of a protocol to transmit the values through a socket connection <br>
-&nbsp; &nbsp; - Mail: filippo.benedetti3@gmail.com
-<br><br>
-Lucia Pecora <br>
-&nbsp; &nbsp; - Contributed on power supply of the boards <br>
-&nbsp; &nbsp; - Worked on the configuration of the pins for the right and esc button <br>
-&nbsp; &nbsp; - Managed the documentation, the presentation and the video <br>
-&nbsp; &nbsp; - Mail: luciapecora01@gmail.com
-<br> <br>
 Matteo Marchiori <br>
 &nbsp; &nbsp; - Contributed on searching libraries and code examples in python for socket communication <br>
 &nbsp; &nbsp; - Worked on the configuration of the joystick movement and left button <br>
 &nbsp; &nbsp; - Contributed in the development of a protocol to transmit the values through a socket connection <br>
 &nbsp; &nbsp; - Mail: matteo.marchiori03@gmail.com
+<br> <br>
+Lucia Pecora <br>
+&nbsp; &nbsp; - Contributed on power supply of the boards <br>
+&nbsp; &nbsp; - Worked on the configuration of the pins for the right and esc button <br>
+&nbsp; &nbsp; - Managed the documentation, the presentation and the video <br>
+&nbsp; &nbsp; - Mail: luciapecora01@gmail.com
 <br>
+
 
 
 <p align="right">(<a href="#readme-erpc">back to top</a>)</p>
