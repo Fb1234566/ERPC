@@ -8,7 +8,7 @@
 
 
 
-<img src="ERPC_photo.jpg" alt="Logo" width="300" height="250">
+<img src="Docs/Presentation/ERPC_photo.jpg" alt="Logo" width="300" height="250">
 <br>
 
 
