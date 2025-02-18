@@ -62,7 +62,7 @@
 
 <!-- PROJECT INTRODUCTION -->
 ## Project introduction
-We've all been there at least once, watching a movie on our computer while sitting on the bed. In these moments, simple actions like adjusting the volume or pausing the movie can be annoying. That's why we came up with the ERPC project (Essential Remote PC Control), a device built with the Texas Instruments MSP432P401R board, the educational boosterpack MKII and the ESP32. By using the joystick and some buttons, the remote control can emulate mouse functions, control the computer's volume, open a virtual keyboard and exit full-screen mode. 
+We've all been there at least once, watching a movie on our computer while sitting on the bed. In these moments, simple actions like adjusting the volume or pausing the movie can be annoying. That's why we came up with the ERPC project (Essential Remote PC Control), a device built with the Texas Instruments MSP432P401R board, the educational boosterpack MKII and the ESP-EYE. By using the joystick and some buttons, the remote control can emulate mouse functions, control the computer's volume, open a virtual keyboard and exit full-screen mode. 
 <br>These are just some of the functions the remote control can perform. <br>By adding the appropriate sensors, many other features could be integrated, such as voice search through a microphone or the inclusion of a touch screen.
 <br>
 
@@ -81,7 +81,7 @@ Python
 <p style="margin-left: 40px;">Software required to program the boards: <br>
  &nbsp; &nbsp; → visual studio code: https://code.visualstudio.com/download <br>
  &nbsp; &nbsp; → code composer studio: https://www.ti.com/tool/download/CCSTUDIO/12.7.0 <br>
- &nbsp; &nbsp; → arduino ide (for ESP32): https://www.arduino.cc/en/software <br>
+ &nbsp; &nbsp; → arduino ide (for ESP-EYE): https://www.arduino.cc/en/software <br>
  &nbsp; &nbsp; → only for linux install Libasound2 dev with the command: "apt-get install libasound2-dev"
 </p>
 
@@ -229,7 +229,7 @@ python3 setup.py install
 
 <!-- USEFUL LINKS -->
 ## Useful links
-Video: https://drive.google.com/file/d/1agivKv0jqHUVvvNMQd2S5w90nPasPmut/view?usp=sharing
+Video: [https://drive.google.com/file/d/1agivKv0jqHUVvvNMQd2S5w90nPasPmut/view?usp=sharing](https://drive.google.com/file/d/1vc2E4uRM63oCAUw0LnEkV0MCEFqxgfME/view?usp=sharing)
 <br> Presentation: [ERPC.pptx](https://docs.google.com/presentation/d/1srpceYGneGkNDBblu5enkKkrtPL8FoVE/edit?usp=sharing&ouid=112294706705879927242&rtpof=true&sd=true)
 <br> Project link: https://github.com/Fb1234566/ERPC.git
 <br>
