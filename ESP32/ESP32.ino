@@ -33,10 +33,10 @@ static SensorData receivedData;
 
 #include <WiFi.h>
 
-const char* ssid = "A32 di Filippo";         // your wifi ssid
-const char* password = "thug9830";           // your wifi password
-const char* hostname = "ERPC";               // the host name of this device
-const char* serverAddr = "192.168.92.191";  // the address of the server (local ip address)
+const char* ssid = "";         // your wifi ssid
+const char* password = "";           // your wifi password
+const char* hostname = "";               // the host name of this device
+const char* serverAddr = "";  // the address of the server (local ip address)
 WiFiUDP udp;
 void setup() {
 
