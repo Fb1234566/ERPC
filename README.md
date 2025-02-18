@@ -114,11 +114,23 @@ The installed microcontroller requires a power supply between 3.5V and 5V to fun
 <!-- PROJECT STRUCTURE -->
 ## Project structure
 <pre>
-                    
+
+Docs
+  ├── Presentation
+          ├── ERPC.pdf                  
+          ├── ERPC.pptx                 
+          └── ERPC_photo.jpg       
+  ├── Specifications
+          ├── ESP32 configuration tasks.odt             
+          ├── ESP32 key features.odt                    
+          ├── esp32_datasheet_en.pdf                    
+          ├── microcontroller_comparision.md            #Comparison between nRF52 DK and ESP-EYE
+          └── nRF52_DK_User_Guide_v3.x.x.pdf            
+
+
 ServerPC	              #server/client communication
   ├── LinuxVolume.c           #volume management
-  ├── clientEsempio.py        #simulation commands UDP client
-  ├── nuovoServer.py          #UDP connection between MSP432P401R and ESP32
+  ├── Server.py               #UDP connection between MSP432P401R and ESP32
   └── setup.py                #script compiles and installs a Python C-extension module
 
 
@@ -129,9 +141,7 @@ ESP32 project
 MSP432P401R project
   ├── targetConfigs				                                     #MSP432 configuration
   ├── main.c					                                     #main for MSP432
-  ├── other files					
-        ├── HAL_I2C.c, HAL_I2C.h                                                     #I2C connection management and definition     
-     	└── msp432p401r.cmd, startup_msp432p401r_ccs.c, system_msp432p401r.c         #linker configuration, interrupt management, mcu startup 
+  └── msp432p401r.cmd, startup_msp432p401r_ccs.c, system_msp432p401r.c               #linker configuration, interrupt management, mcu startup 
 
 </pre>
 <br>
