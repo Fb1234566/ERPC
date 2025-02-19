@@ -39,9 +39,7 @@ void setup() {
   }
 
   // Initialize the txBuffer with some example data
-  for (int i = 0; i < TRANSFER_SIZE; i++) {
-    txBuffer[i] = i;
-  }
+  txBuffer[0] = 0;
 
   // Configure the SPI bus (pins)
   spi_bus_config_t buscfg = {
@@ -58,7 +56,7 @@ void setup() {
     .spics_io_num = PIN_NUM_CS,     // Chip select pin
     .flags = 0,
     .queue_size = 1,                // Transaction queue size
-    .mode = 3,                      // SPI mode 0: CPOL = 0, CPHA = 0
+    .mode = 3,                      // SPI mode 3
     .post_setup_cb = NULL,          // Optional callback (after setup)
     .post_trans_cb = NULL           // Optional callback (after transaction)
   };
@@ -89,23 +87,17 @@ void setup() {
   }
   
 }
+// Function used to send data via UDP
 void sendData(uint8_t* d){
   udp.beginPacket(serverAddr, 5006);
   udp.write(d, 9);
   udp.endPacket();
 }
-void printBits(uint8_t n) {
-  for (int i = 7; i >= 0; i--) {
-    Serial.print((n >> i) & 1);
-  }
-}
-void loop() {
-  // Block until the SPI transaction completes
 
+void loop() {
   spi_slave_transaction_t* spiTransPtr = &spiTrans;
 
   esp_err_t ret = spi_slave_get_trans_result(HSPI_HOST, &spiTransPtr, portMAX_DELAY);
-  Serial.println(ret);
   if (ret == ESP_OK) {
     // Send data via UDP
     sendData(rxBuffer);
