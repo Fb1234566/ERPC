@@ -31,8 +31,6 @@ spi_slave_transaction_t spiTrans;
 
 static SensorData receivedData;
 
-#include <WiFi.h>
-
 const char* ssid = "";         // your wifi ssid
 const char* password = "";           // your wifi password
 const char* hostname = "";               // the host name of this device
