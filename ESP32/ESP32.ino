@@ -12,24 +12,14 @@
 #define PIN_NUM_CS    19   // Chip Select
 
 // Transaction size in bytes
-#pragma pack(push, 1)
-typedef struct {
-    uint8_t actionType;  // 0 = Joystick X, 1 = Joystick Y, 2 = Potenziometro, 3-6 = Pulsanti
-    float value;
-    float value1;
-} SensorData;
-#pragma pack(pop)
 #define TRANSFER_SIZE 9
 
 // Buffers for SPI communication
 uint8_t txBuffer[1]; // Data to send to master
 uint8_t rxBuffer[TRANSFER_SIZE]; // Data received from master
 
-
 // SPI transaction structure (used to queue transactions)
 spi_slave_transaction_t spiTrans;
-
-static SensorData receivedData;
 
 const char* ssid = "";         // your wifi ssid
 const char* password = "";           // your wifi password
